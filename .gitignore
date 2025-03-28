@@ -1,0 +1,14 @@
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Generated documents
+generated_resume.docx
+
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/
