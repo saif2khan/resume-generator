@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 app = Flask(__name__)
 
 # Get API key from environment variable
+load_dotenv()  # Load variables from .env file
 API_KEY = os.environ.get("API_KEY")
 if not API_KEY:
     raise ValueError("No API_KEY environment variable set")
@@ -26,6 +27,7 @@ def require_api_key(f):
     return decorated
 
 @app.route("/generate-resume", methods=["POST"])
+@require_api_key  # Make sure this decorator is applied
 def generate_resume():
     data = request.get_json()
 
@@ -44,5 +46,4 @@ def generate_resume():
 
 # Add this code to run the Flask application
 if __name__ == "__main__":
-    load_dotenv()  # Load variables from .env file
     app.run(debug=True)
